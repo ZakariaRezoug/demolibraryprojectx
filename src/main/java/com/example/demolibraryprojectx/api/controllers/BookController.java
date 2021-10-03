@@ -131,21 +131,21 @@ public class BookController {
     public ResponseEntity<String> receiveBookName(String bookName, HttpServletRequest httpServletRequest){
         httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("name", bookName);
-        return ResponseEntity.ok("Kitap adı hafızaya atıldı.");
+        return ResponseEntity.ok("Kitap önbelleğe alındı.");
     }
 
     @PostMapping("/receiveauthor")
     public ResponseEntity<String> receiveAuthor(Author author, HttpServletRequest httpServletRequest){
         httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("authorInfo", author);
-        return ResponseEntity.ok("Yazar bilgileri hafızaya atıldı.");
+        return ResponseEntity.ok("Yazar önbelleğe alındı.");
     }
 
     @PostMapping("/receivegenre")
     public ResponseEntity<String> receiveGenre(Genre genre, HttpServletRequest httpServletRequest){
         httpSession = httpServletRequest.getSession();
         httpSession.setAttribute("genreInfo", genre);
-        return ResponseEntity.ok("Tür bilgileri hafızaya atıldı.");
+        return ResponseEntity.ok("Tür önbelleğe alındı.");
     }
 
     @PostMapping("/search")
