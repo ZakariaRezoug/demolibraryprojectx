@@ -56,10 +56,10 @@ public class BookController {
         if(result.isSuccess()) {
             return ResponseEntity.ok(result);}
 
-        else {
+
 
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
-        }
+
 
     }
 
@@ -70,10 +70,10 @@ public class BookController {
         if(result.getData().size() == 0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);}
 
-        else {
+
 
             return ResponseEntity.ok(result) ;
-        }
+
 
     }
 
@@ -84,10 +84,10 @@ public class BookController {
         if(result.getData().size() == 0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);}
 
-        else {
+
 
             return ResponseEntity.ok(result) ;
-        }
+
 
     }
 
@@ -98,10 +98,10 @@ public class BookController {
         if(result.getData().size() == 0) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);}
 
-        else {
+
 
             return ResponseEntity.ok(result) ;
-        }
+
 
     }
 
@@ -111,9 +111,9 @@ public class BookController {
         var result = this.bookService.add(book);
         if(result.isSuccess()) {
             return ResponseEntity.ok(result);}
-        else {
+
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
-        }
+
     }
 
     @PostMapping("/delete")
@@ -122,9 +122,9 @@ public class BookController {
         var result = this.bookService.delete(book);
         if(result.isSuccess()) {
             return ResponseEntity.ok(result);}
-        else {
+
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(result);
-        }
+
     }
 
     @PostMapping("/receivebookname")
@@ -153,10 +153,10 @@ public class BookController {
         var result = this.bookService.search(search);
         if(result.getData().size() == 0) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);}
-        else {
+
 
             return ResponseEntity.ok(result) ;
-        }
+
 
     }
     }

@@ -14,6 +14,8 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.TextCriteria;
+import org.springframework.data.mongodb.core.query.TextQuery;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -89,13 +91,14 @@ public class BookManager implements BookService {
 
     @Override
     public DataResult<List<Book>> search(String search) {
-        Query query = new Query();
-        Criteria criteria = new Criteria().orOperator(
-                Criteria.where("name").regex(search),
-                Criteria.where("author.authorName").regex(search),
-                Criteria.where("genre.genreName").regex(search)
-        );
-        query.addCriteria(criteria);
+
+        TextCriteria criteria = TextCriteria
+                .forDefaultLanguage()
+                .matching(search);
+
+        Query query = TextQuery.queryText(criteria).sortByScore();
+
+
         return new SuccessDataResult<>(mongoTemplate.find(query,Book.class));
     }
 }
