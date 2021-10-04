@@ -30,7 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/api/Book/getByName").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/api/Book/getByAuthor").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/api/Book/getByGenre").hasRole("USER")
-                .antMatchers(HttpMethod.POST, "/api/Book/search").hasRole("USER")
+                .antMatchers(HttpMethod.POST, "/api/Book/{search}/search").hasRole("USER")
                 .and()
                 .csrf().disable()
                 .formLogin().disable();

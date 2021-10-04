@@ -148,9 +148,10 @@ public class BookController {
         return ResponseEntity.ok("Tür önbelleğe alındı.");
     }
 
-    @PostMapping("/search")
+    @PostMapping("/{search}/search")
     public ResponseEntity<DataResult<List<Book>>> search(String search){
         var result = this.bookService.search(search);
+
         if(result.getData().size() == 0) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(result);}
 

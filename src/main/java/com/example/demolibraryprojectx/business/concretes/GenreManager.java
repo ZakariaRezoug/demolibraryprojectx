@@ -25,7 +25,7 @@ public class GenreManager implements GenreService {
     @Override
     public DataResult<List<Genre>> getAll() {
 
-        return new SuccessDataResult<List<Genre>>(this.genreDao.findAll(), "Kitaplar listelendi.");
+        return new SuccessDataResult<List<Genre>>(this.genreDao.findAll(), "Türler listelendi.");
     }
 
     @Override

@@ -94,9 +94,16 @@ public class BookManager implements BookService {
 
         TextCriteria criteria = TextCriteria
                 .forDefaultLanguage()
-                .matching(search);
+                .matchingAny(search);
 
-        Query query = TextQuery.queryText(criteria).sortByScore();
+          Query query = TextQuery.queryText(criteria).sortByScore();
+
+      /*  Criteria criteria = new Criteria().orOperator(
+                Criteria.where("name").regex(search),
+                Criteria.where("author.authorName").regex(search),
+                Criteria.where("genre.genreName").regex(search));
+
+        Query query = new Query(criteria); */
 
 
         return new SuccessDataResult<>(mongoTemplate.find(query,Book.class));

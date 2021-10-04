@@ -13,7 +13,6 @@ import org.springframework.data.mongodb.core.mapping.TextScore;
 
 @Data
 @Document("book")
-@AllArgsConstructor
 @NoArgsConstructor
 public class Book {
     @Id
